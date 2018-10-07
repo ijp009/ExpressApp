@@ -1,14 +1,9 @@
-const Users = require('../models/product');
-
-//Simple version, without validation or sanitation
-exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
-};
+const Product = require('../models/product');
 
 exports.create = function (req, res) {
-    let product = new Users({
+    let product = new Product({
         name: req.body.name,
-        email: req.body.email
+        price: req.body.price
     });
     product.save(function(err) {
         if (err) {
@@ -19,7 +14,7 @@ exports.create = function (req, res) {
 };
 
 exports.getAllProducts = function(req, res) {
-    Users.find({}, function(err, products) {
+    Product.find({}, function(err, products) {
         if (err) {
             res.send(err);
         }
@@ -28,7 +23,7 @@ exports.getAllProducts = function(req, res) {
 }
 
 exports.getProducytById = function (req, res) {
-    Users.findById(req.params.id, function (err, product) {
+    Product.findById(req.params.id, function (err, product) {
         if (err) {
             res.send(err);
         }
@@ -41,7 +36,7 @@ exports.getProducytById = function (req, res) {
 }
 
 exports.updateProduct = function(req, res) {
-    Users.update({'_id': req.params.id}, req.body, function (err) {
+    Product.update({'_id': req.params.id}, req.body, function (err) {
         if (err) {
             res.send(err);
         }
@@ -50,7 +45,7 @@ exports.updateProduct = function(req, res) {
 }
 
 exports.deleteProduct = function (req, res) {
-    Users.deleteOne({'_id': req.params.id}, function (err) {
+    Product.deleteOne({'_id': req.params.id}, function (err) {
         if (err) {
             res.send(err);
         }
