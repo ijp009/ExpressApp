@@ -9,7 +9,7 @@ exports.create = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send('Created Successfully!!');
+        res.send({'message': 'Created Successfully!!'});
     })
 };
 
@@ -30,7 +30,7 @@ exports.getProducytById = function (req, res) {
         if (product) {
             res.send(product);
         } else {
-            res.send('No such product');
+            res.send({'message':'No such product'});
         }
     });
 }
@@ -40,7 +40,7 @@ exports.updateProduct = function(req, res) {
         if (err) {
             res.send(err);
         }
-        res.send('Updated Successfully');
+        res.send({'message':'Updated Successfully'});
     })
 }
 
@@ -49,6 +49,6 @@ exports.deleteProduct = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send('Deleted Successfully');
+        res.send({'message':'Deleted Successfully'});
     })
 }
